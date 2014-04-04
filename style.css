@@ -1,0 +1,57 @@
+#inputSpacer{
+	height:40px;
+}
+#tableSpacer{
+	height:20px;
+}
+#tableHead{
+	position:absolute;
+	background-color:black;
+	height:1px;
+	width:500px;
+}
+/* Styles for the day Names */
+.dayNames{
+	position:absolute;
+	width:80px;
+	height:20px;
+}
+#nameMonday{
+	margin-left: 30px;
+}
+#nameTuesday{
+	margin-left:125px;
+}
+#nameWednesday{
+	margin-left:220px;
+}
+#nameThursday{
+	margin-left:315px;
+}
+#nameFriday{
+	margin-left:430px;
+}
+
+/* Styles for the bars */
+.dayBar{
+	position:absolute;
+	width:80px;
+	height:20px;
+	background-color:blue;
+	cursor:n-resize;
+}
+#barMonday{
+	margin-left: 10px;
+}
+#barTuesday{
+	margin-left:110px;
+}
+#barWednesday{
+	margin-left:210px;
+}
+#barThursday{
+	margin-left:310px;
+}
+#barFriday{
+	margin-left:410px;
+}
