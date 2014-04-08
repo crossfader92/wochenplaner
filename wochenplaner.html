@@ -1,13 +1,16 @@
 <html>
+<head>
 <script language="javascript" type="text/javascript" src="javascript.js"></script>
 <link rel="stylesheet" href="style.css">
+</head>
+
 <body onmousemove="slide()" onselectstart="return false;">
 	<div id="errorWorktime"></div>
-	<input type="text" id="worktime" onchange="checkInput()">
+	<label class="label" for="worktime">Stundenzahl</label><input type="text" id="worktime" onchange="checkInput()" value="38.5">
 	<div id="inputSpacer"></div>
 	
 	<!-- Day Names -->
-	<div id="nameMonday" class="dayNames"><a href="#" onclick="switchLock('barMonday')">Montag</a></div>
+	<div id="nameMonday" class="dayNames"><a href="#" onclick="switchLock('barMonday')"><i class="fa fa-lock"></i>Montag</a></div>
 	<div id="nameTuesday" class="dayNames"><a href="#" onclick="switchLock('barTuesday')">Dienstag</a></div>
 	<div id="nameWednesday" class="dayNames"><a href="#" onclick="switchLock('barWednesday')">Mittwoch</a></div>
 	<div id="nameThursday" class="dayNames"><a href="#" onclick="switchLock('barThursday')">Donnerstag</a></div>
@@ -17,10 +20,10 @@
 	<div id="tableHead"></div>
 	
 	<!-- Day Bars -->
-	<div id="barMonday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()"></div>
-	<div id="barTuesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()"></div>
-	<div id="barWednesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()"></div>
-	<div id="barThursday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()"></div>
-	<div id="barFriday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()"></div>
+	<div id="barMonday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
+	<div id="barTuesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
+	<div id="barWednesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
+	<div id="barThursday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
+	<div id="barFriday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
 </body>
 </html>

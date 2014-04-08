@@ -20,15 +20,15 @@ function checkInput(){
 		return true;
 	}else{
 		document.getElementById("errorWorktime").innerHTML = "Bitte eine Stundenzahl von 10-99 eingeben!";
-		document.getElementById("errorWorktime").style.color = "red";
+		document.getElementById("errorWorktime").style.color = "#c0392b";
 		return false;
 	}
 }
 function switchLock(selDay){
-	if(document.getElementById(selDay).style.backgroundColor == 'red'){
-		document.getElementById(selDay).style.backgroundColor = 'blue';
+	if(document.getElementById(selDay).style.backgroundColor == 'rgb(192, 57, 43)'){
+		document.getElementById(selDay).style.backgroundColor = '#3498db';
 	}else{
-		document.getElementById(selDay).style.backgroundColor = 'red';
+		document.getElementById(selDay).style.backgroundColor = '#c0392b';
 	}
 }
 function startDrag(objElem){
@@ -63,7 +63,7 @@ function calcDays(){
 function getAmmountOfLockedDays(){
 	i=0;
 	for(j=0; j < days.length; j++){
-		if(document.getElementById(days[j]).style.backgroundColor == 'red'){
+		if(document.getElementById(days[j]).style.backgroundColor == 'rgb(192, 57, 43)'){
 			i++;
 		}
 	}
@@ -74,7 +74,7 @@ function resetDays(){
 	var additionalTime = ((hoursToDo-hoursDone) / (4-ammountOfLockedDays));
 	for(j=0; j < days.length; j++){
 		//alert(j+"."+days.length);
-		if(days[j] != divObj.id && document.getElementById(days[j]).style.backgroundColor != 'red'){
+		if(days[j] != divObj.id && document.getElementById(days[j]).style.backgroundColor != 'rgb(192, 57, 43)'){
 			var newHeight = Math.floor(document.getElementById(days[j]).offsetHeight + (additionalTime*60));
 			//alert(document.getElementById(days[j]).style.height);
 			document.getElementById(days[j]).style.height = newHeight;
