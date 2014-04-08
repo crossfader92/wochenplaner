@@ -1,4 +1,3 @@
-
 var divObj = null;
 var hoursToDo = 0;
 var hoursDone = 0;
@@ -25,6 +24,13 @@ function checkInput(){
 		return false;
 	}
 }
+function switchLock(selDay){
+	if(document.getElementById(selDay).style.backgroundColor == 'red'){
+		document.getElementById(selDay).style.backgroundColor = 'blue';
+	}else{
+		document.getElementById(selDay).style.backgroundColor = 'red';
+	}
+}
 function startDrag(objElem){
 	if(checkInput()){
 		divObj = objElem;
@@ -34,11 +40,7 @@ function stopDrag(){
 	divObj = null;
 }
 function slide(){
-	if(divObj != null){
-		// Browserweiche
-		IE = document.all&&!window.opera;
-		DOM = document.getElementById&&!IE;
-		
+	if(divObj != null){		
 		var mouseY  = 0;       	// Y-Koordinate der Maus
 		var divTop 	= 0			// Y-Koordinate des Div (top)
 		mouseY = event.clientY
@@ -58,11 +60,21 @@ function calcDays(){
 	resetDays();
 	stopDrag();
 }
+function getAmmountOfLockedDays(){
+	i=0;
+	for(j=0; j < days.length; j++){
+		if(document.getElementById(days[j]).style.backgroundColor == 'red'){
+			i++;
+		}
+	}
+	return i;
+}
 function resetDays(){
-	var additionalTime = ((hoursToDo-hoursDone) / 4);
+	var ammountOfLockedDays = getAmmountOfLockedDays();
+	var additionalTime = ((hoursToDo-hoursDone) / (4-ammountOfLockedDays));
 	for(j=0; j < days.length; j++){
 		//alert(j+"."+days.length);
-		if(days[j] != divObj.id){
+		if(days[j] != divObj.id && document.getElementById(days[j]).style.backgroundColor != 'red'){
 			var newHeight = Math.floor(document.getElementById(days[j]).offsetHeight + (additionalTime*60));
 			//alert(document.getElementById(days[j]).style.height);
 			document.getElementById(days[j]).style.height = newHeight;
