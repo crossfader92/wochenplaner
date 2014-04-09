@@ -37,15 +37,18 @@ function startDrag(objElem){
 	}
 }
 function stopDrag(){
+	divObj.style.height = divObj.innerHTML *60;
 	divObj = null;
 }
-function slide(){
+function slide(evt){
 	if(divObj != null){		
 		var mouseY  = 0;       	// Y-Koordinate der Maus
-		var divTop 	= 0			// Y-Koordinate des Div (top)
-		mouseY = event.clientY
+		var divTop 	= 0;		// Y-Koordinate des Div (top)
+		mouseY = evt.clientY;
 		divTop = divObj.offsetTop;
-		divObj.style.height = mouseY - divTop + 1;	
+		divObj.style.height = mouseY - divTop + 1;
+		calcDays();
+		divObj.innerHTML = Math.floor((mouseY - divTop + 1)/60*10)/10;
 	}
 }
 function calcDays(){
@@ -58,7 +61,6 @@ function calcDays(){
 		hoursDone = hoursDone + (Math.floor(dayHeight/60*100)/100);
 	}
 	resetDays();
-	stopDrag();
 }
 function getAmmountOfLockedDays(){
 	i=0;
