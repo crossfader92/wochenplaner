@@ -56,6 +56,7 @@ function calcDays(){
 		dayHeight = document.getElementById(days[i]).style.height;
 		dayHeight = dayHeight.replace(/px/,"");
 		document.getElementById(days[i]).innerHTML = Math.floor(dayHeight/60*100)/100;
+<<<<<<< HEAD
 		if (i == days.length-1){
 		var totalHours = 0;
 			for(i=0; i < days.length; i++){
@@ -64,6 +65,8 @@ function calcDays(){
 		if (totalHours/60 < document.getElementById("worktime").value)
 			document.getElementById(days[days.length-1]).style.height += 0.1*6; //0.1 Rundungsfehler behoben (https://github.com/crossfader92/wochenplaner/issues/2)
 		}
+=======
+>>>>>>> 39da2075c50b7d3588ad7a26e303922c49876c55
 	}
 	
 	resetDays();
