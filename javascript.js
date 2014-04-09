@@ -63,7 +63,7 @@ function calcDays(){
 			totalHours += document.getElementById(days[i]).style.height;
 			}
 		if (totalHours/60 < document.getElementById("worktime").value)
-			document.getElementById(days[days.length-1]).style.height += 0.1*6; //0.1 Rundungsfehler behoben (https://github.com/crossfader92/wochenplaner/issues/2)
+			document.getElementById(days[days.length-1]).style.height += 0.1*6; //issue #2 (https://github.com/crossfader92/wochenplaner/issues/2)
 		}
 	}
 	
@@ -73,7 +73,6 @@ function getAmmountOfLockedDays(){
 	i=0;
 	for(j=0; j < days.length; j++){
 		if(document.getElementById(days[j]).style.backgroundColor == 'rgb(192, 57, 43)'){
-
 			i++;
 		}
 	}
@@ -95,12 +94,48 @@ function resetDays(){
 	//console.log((hoursToDo-hoursDone) +"/"+ (4-ammountOfLockedDays));
 	//console.log("additionalTime:"+additionalTime); 
 	for(j=0; j < days.length; j++){
-		if(days[j] != divObj.id && document.getElementById(days[j]).style.backgroundColor != 'rgb(192, 57, 43)'){
-			
-			var newHeight = additionalTime*60
-			
+		if(days[j] != divObj.id && document.getElementById(days[j]).style.backgroundColor != 'rgb(192, 57, 43)'){			
+			var newHeight = additionalTime*60;			
 			document.getElementById(days[j]).style.height = newHeight;
 			document.getElementById(days[j]).innerHTML = Math.round(additionalTime*10)/10;
 		}
 	}
+}
+
+function save(){
+	var times = "";
+	for(i=0; i < days.length; i++){
+		times += document.getElementById(days[i]).style.height;
+	}
+	var exdays = 365;
+	setCookie("values",times,exdays);
+}
+
+function setCookie(cname,cvalue,exdays)
+{
+	var d = new Date();
+	d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function load(){
+	var values = getCookie("values").split("px").filter(Number);
+	for(i=0; i < days.length; i++){
+		document.getElementById(days[i]).style.height = values[i];
+		document.getElementById(days[i]).innerHTML = Math.floor((values[i])/60*10)/10;
+	}
+	
+}
+
+function getCookie(cname)
+{
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) 
+	  {
+	  var c = ca[i].trim();
+	  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	  }
+	return "";
 }
