@@ -92,8 +92,8 @@ function resetDays(){
 
 	var ammountOfLockedDays = getAmmountOfLockedDays();
 	var additionalTime = ((hoursToDo-hoursDone) / (4-ammountOfLockedDays));
-	console.log((hoursToDo-hoursDone) +"/"+ (4-ammountOfLockedDays));
-	console.log("additionalTime:"+additionalTime);
+	//console.log((hoursToDo-hoursDone) +"/"+ (4-ammountOfLockedDays));
+	//console.log("additionalTime:"+additionalTime); 
 	for(j=0; j < days.length; j++){
 		if(days[j] != divObj.id && document.getElementById(days[j]).style.backgroundColor != 'rgb(192, 57, 43)'){
 			
