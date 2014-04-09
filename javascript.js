@@ -37,7 +37,7 @@ function startDrag(objElem){
 	}
 }
 function stopDrag(){
-	divObj.style.height = divObj.innerHTML *60;
+	divObj.style.height = divObj.innerHTML * 60;
 	divObj = null;
 }
 function slide(evt){
@@ -48,39 +48,50 @@ function slide(evt){
 		divTop = divObj.offsetTop;
 		divObj.style.height = mouseY - divTop + 1;
 		calcDays();
-		divObj.innerHTML = Math.floor((mouseY - divTop + 1)/60*10)/10;
+		divObj.innerHTML = Math.floor((mouseY - divTop)/60*10)/10;
 	}
 }
 function calcDays(){
-	hoursDone = 0;
-
 	for(i=0; i < days.length; i++){
 		dayHeight = document.getElementById(days[i]).style.height;
 		dayHeight = dayHeight.replace(/px/,"");
 		document.getElementById(days[i]).innerHTML = Math.floor(dayHeight/60*100)/100;
-		hoursDone = hoursDone + (Math.floor(dayHeight/60*100)/100);
 	}
+	
 	resetDays();
 }
 function getAmmountOfLockedDays(){
 	i=0;
 	for(j=0; j < days.length; j++){
 		if(document.getElementById(days[j]).style.backgroundColor == 'rgb(192, 57, 43)'){
+
 			i++;
 		}
+	}
+	if(divObj.style.backgroundColor == 'rgb(192, 57, 43)'){
+		i--;
 	}
 	return i;
 }
 function resetDays(){
+	hoursDone = 0;
+	for(j=0; j < days.length; j++){
+		if(days[j] == divObj.id || document.getElementById(days[j]).style.backgroundColor == 'rgb(192, 57, 43)'){
+			hoursDone = (hoursDone)+parseFloat(document.getElementById(days[j]).innerHTML);
+		}
+	}
+
 	var ammountOfLockedDays = getAmmountOfLockedDays();
 	var additionalTime = ((hoursToDo-hoursDone) / (4-ammountOfLockedDays));
+	console.log((hoursToDo-hoursDone) +"/"+ (4-ammountOfLockedDays));
+	console.log("additionalTime:"+additionalTime);
 	for(j=0; j < days.length; j++){
-		//alert(j+"."+days.length);
 		if(days[j] != divObj.id && document.getElementById(days[j]).style.backgroundColor != 'rgb(192, 57, 43)'){
-			var newHeight = Math.floor(document.getElementById(days[j]).offsetHeight + (additionalTime*60));
-			//alert(document.getElementById(days[j]).style.height);
+			
+			var newHeight = additionalTime*60
+			
 			document.getElementById(days[j]).style.height = newHeight;
-			document.getElementById(days[j]).innerHTML = Math.floor(newHeight/60*100)/100;
+			document.getElementById(days[j]).innerHTML = Math.round(additionalTime*10)/10;
 		}
 	}
 }
