@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body onmousemove="slide()" onselectstart="return false;">
+<body onmousemove="slide(event)" onselectstart="return false;">
 	<div id="errorWorktime"></div>
 	<label class="label" for="worktime">Stundenzahl</label><input type="text" id="worktime" onchange="checkInput()" value="38.5">
 	<div id="inputSpacer"></div>
@@ -20,10 +20,10 @@
 	<div id="tableHead"></div>
 	
 	<!-- Day Bars -->
-	<div id="barMonday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
-	<div id="barTuesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
-	<div id="barWednesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
-	<div id="barThursday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
-	<div id="barFriday" class="dayBar" onmousedown="startDrag(this)" onmouseup="calcDays()">0</div>
+	<div id="barMonday" class="dayBar" onmousedown="startDrag(this)" onmouseup="stopDrag()">0</div>
+	<div id="barTuesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="stopDrag()">0</div>
+	<div id="barWednesday" class="dayBar" onmousedown="startDrag(this)" onmouseup="stopDrag()">0</div>
+	<div id="barThursday" class="dayBar" onmousedown="startDrag(this)" onmouseup="stopDrag()">0</div>
+	<div id="barFriday" class="dayBar" onmousedown="startDrag(this)" onmouseup="stopDrag()">0</div>
 </body>
 </html>
